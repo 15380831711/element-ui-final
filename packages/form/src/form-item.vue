@@ -13,7 +13,7 @@
       :is-auto-width="labelStyle && labelStyle.width === 'auto'"
       :update-all="form.labelWidth === 'auto'">
       <label :for="labelFor" class="el-form-item__label" :style="labelStyle" v-if="label || $slots.label">
-        <slot name="label">{{label + form.labelSuffix}}</slot>
+        <slot name="label">{{t_p('label') + form.labelSuffix}}</slot>
       </label>
     </label-wrap>
     <div class="el-form-item__content" :style="contentStyle">
@@ -41,6 +41,7 @@
 <script>
   import AsyncValidator from 'async-validator';
   import emitter from 'element-ui/src/mixins/emitter';
+  import Locale from 'element-ui/src/mixins/locale';
   import objectAssign from 'element-ui/src/utils/merge';
   import { noop, getPropByPath } from 'element-ui/src/utils/util';
   import LabelWrap from './label-wrap';
@@ -49,7 +50,7 @@
 
     componentName: 'ElFormItem',
 
-    mixins: [emitter],
+    mixins: [emitter, Locale],
 
     provide() {
       return {

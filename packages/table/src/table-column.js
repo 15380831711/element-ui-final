@@ -1,11 +1,14 @@
 import { cellStarts, cellForced, defaultRenderCell, treeCellPrefix } from './config';
 import { mergeOptions, parseWidth, parseMinWidth, compose } from './util';
 import ElCheckbox from 'element-ui/packages/checkbox';
+import Locale from 'element-ui/src/mixins/locale';
 
 let columnIdSeed = 1;
 
 export default {
   name: 'ElTableColumn',
+
+  mixins: [Locale],
 
   props: {
     type: {
@@ -291,6 +294,12 @@ export default {
     column = chains(column);
 
     this.columnConfig = column;
+
+    this.columnConfig.label = this.t_p('label');
+
+    if (this.$attrs['prop-t'] !== undefined) {
+      this.columnConfig.t = this.t;
+    }
 
     // 注册 watcher
     this.registerNormalWatchers();

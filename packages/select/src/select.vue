@@ -72,6 +72,7 @@
       v-model="selectedLabel"
       type="text"
       :placeholder="currentPlaceholder"
+      :placeholder-t="$attrs['placeholder-t']"
       :name="name"
       :id="id"
       :autocomplete="autoComplete || autocomplete"

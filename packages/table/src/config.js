@@ -94,6 +94,9 @@ export function defaultRenderCell(h, { row, column, $index }) {
   if (column && column.formatter) {
     return column.formatter(row, column, value, $index);
   }
+  if (column && column.t && value) {
+    return column.t(value);
+  }
   return value;
 }
 

@@ -25,6 +25,7 @@
         v-if="type !== 'textarea'"
         class="el-input__inner"
         v-bind="$attrs"
+        :placeholder="t_p('placeholder')"
         :type="showPassword ? (passwordVisible ? 'text': 'password') : type"
         :disabled="inputDisabled"
         :readonly="readonly"
@@ -94,6 +95,7 @@
       @input="handleInput"
       ref="textarea"
       v-bind="$attrs"
+      :placeholder="t_p('placeholder')"
       :disabled="inputDisabled"
       :readonly="readonly"
       :autocomplete="autoComplete || autocomplete"
@@ -113,13 +115,14 @@
   import calcTextareaHeight from './calcTextareaHeight';
   import merge from 'element-ui/src/utils/merge';
   import {isKorean} from 'element-ui/src/utils/shared';
+  import Locale from 'element-ui/src/mixins/locale';
 
   export default {
     name: 'ElInput',
 
     componentName: 'ElInput',
 
-    mixins: [emitter, Migrating],
+    mixins: [emitter, Migrating, Locale],
 
     inheritAttrs: false,
 
